@@ -17,28 +17,25 @@ It supports running standard electrochemical simulations:
 - **DLCap** — double-layer capacitance curves
 - related analysis and plotting utilities
 
-The main workflow is: load the package code in `src/`, then open a runnable notebook in `notebooks/` (or a plain script in `scripts/`) that performs the simulation and generates outputs.
+The main workflow is: load the project code in `src/`, then open a runnable notebook in `notebooks/` (or a plain script in `scripts/`) that performs the simulation and generates outputs.
 
 ---
 
 ## 1. Getting started
 
-The package entry point `src/AuCO2RR.jl` **automatically loads** the model, including all relevant modules from `src/` and the plotting helpers in `src/AuCO2RR_plots/`. Each notebook in `notebooks/` loads this package at the top, so running a notebook executes the full simulation workflow without requiring manual includes.
+The project entry point `src/AuCO2RR.jl` **automatically loads** the model, including all relevant modules from `src/` and the plotting helpers in `src/AuCO2RR_plots/`. Each notebook in `notebooks/` loads this package at the top, so running a notebook executes the full simulation workflow without requiring manual includes.
 
 Each simulation lives in its **own notebook** (e.g. `CyclicVoltammetry_notebook.jl` for CV). Simulations are **triggered interactively** inside each notebook.
 
 ### Requirements
-
-| | |
-|---|---|
-| Julia | 1.9 or later |
-| Required external package | [`CatmapInterface.jl`](https://github.com/ElCatFVM/CatmapInterface.jl) (see step 3) |
+The project requirments are recorded in the Project.toml file. Julia's package manager
+automatically resolves them and installs the dependent packages.
 
 ### 1) Clone
 
 ```bash
-git clone https://github.com/ElCatFVM/Capacitance_Code
-cd Capacitance_Code
+git clone https://github.com/ElCatFVM/AuCO2RR.jl
+cd AuCO2RR.jl
 ```
 
 ### 2) Instantiate the Julia environment
@@ -57,14 +54,6 @@ Optional but recommended:
 
 ```julia
 (AuCO2RR)> precompile
-```
-
-### 3) Add `CatmapInterface.jl` (required)
-
-`CatmapInterface.jl` is not registered in the Julia General registry, so it must be added by URL. In the same environment (still in Pkg mode):
-
-```julia
-(AuCO2RR)> add [https://github.com/ElCatFVM/CatmapInterface.jl](https://github.com/ElCatFVM/AuCO2RR.jl)
 ```
 
 ### 4) Run a notebook
@@ -110,7 +99,7 @@ Plain runnable Julia scripts (non-notebook) for sweep comparisons and batch runs
 
 | File | Purpose |
 |---|---|
-| `AuCO2RR.jl` | Package entry point. Includes the modules below and the plotting helpers in `AuCO2RR_plots/`. Loaded by the notebooks and scripts |
+| `AuCO2RR.jl` | Project entry point. Includes the modules below and the plotting helpers in `AuCO2RR_plots/`. Loaded by the notebooks and scripts |
 | `cv.jl`, `iv.jl`, `dlcap.jl` | CV / IV / double-layer capacitance solvers |
 | `goldmodel.jl` | Gold (Au) electrode and interface model definition |
 | `sweeps_csv.jl` | Sweep setup and CSV export helpers |
@@ -148,4 +137,4 @@ The methodology implemented in this repository is described in:
 - **Sumin Choi** — Korea University — model implementation, simulations, validation
 - **Jürgen Fuhrmann** — Weierstrass Institute (WIAS), Berlin — numerical methods and solver framework
 
-This package builds on [VoronoiFVM.jl](https://github.com/WIAS-PDELib/VoronoiFVM.jl), [LiquidElectrolytes.jl](https://github.com/j-fu/LiquidElectrolytes.jl) and [CatmapInterface.jl](https://github.com/ElCatFVM/CatmapInterface.jl).
+This project builds on [VoronoiFVM.jl](https://github.com/WIAS-PDELib/VoronoiFVM.jl), [LiquidElectrolytes.jl](https://github.com/j-fu/LiquidElectrolytes.jl) and [CatmapInterface.jl](https://github.com/ElCatFVM/CatmapInterface.jl).
