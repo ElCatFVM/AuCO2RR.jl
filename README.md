@@ -1,4 +1,7 @@
 # AuCO2RR.jl
+[![DOI](https://zenodo.org/badge/935938974.svg)](https://doi.org/10.5281/zenodo.22870728)
+[![Paper](https://img.shields.io/badge/Paper-Journal-blue)](https://doi.org/10.1016/j.electacta.2026.149932)
+
 
 **Fully integrated, time-dependent multiscale model of CO₂ electroreduction on gold**
 
